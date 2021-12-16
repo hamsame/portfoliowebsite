@@ -1,0 +1,19 @@
+.navbar {
+  margin: 0 auto;
+  width: 90%;
+  padding: 2rem;
+  display: flex;
+  gap: 7.5%;
+  list-style: none;
+}
+
+.navbar li a {
+  text-decoration: none;
+  color: #555;
+}
+
+.activeNavbarItem {
+  text-decoration: underline !important;
+  font-weight: bold;
+  color: #000 !important;
+}
