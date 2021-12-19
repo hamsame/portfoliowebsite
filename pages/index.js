@@ -33,7 +33,13 @@ export default function Home() {
             </a>
 
             <h3>
-              <a href='https://gameland.vercel.app/'>Gamerland</a>
+              <a
+                href='https://gameland.vercel.app/'
+                target='_blank'
+                rel='noreferrer'
+              >
+                Gamerland
+              </a>
             </h3>
             <p>
               A website for gamers built with Next.js and Styled Components. I
@@ -63,7 +69,11 @@ export default function Home() {
 
           {/* project */}
           <article className={styles.project}>
-            <a href='https://gonomad.netlify.app/'>
+            <a
+              href='https://gonomad.netlify.app/'
+              target='_blank'
+              rel='noreferrer'
+            >
               <Image
                 width={600}
                 height={350}
@@ -72,7 +82,13 @@ export default function Home() {
               />
             </a>
             <h3>
-              <a href='https://gonomad.netlify.app/'>GoNomad</a>
+              <a
+                href='https://gonomad.netlify.app/'
+                target='_blank'
+                rel='noreferrer'
+              >
+                GoNomad
+              </a>
             </h3>
 
             <p>
@@ -102,7 +118,11 @@ export default function Home() {
 
           {/* project */}
           <article className={styles.project}>
-            <a href='https://react-js-restaurant.netlify.app/'>
+            <a
+              href='https://react-js-restaurant.netlify.app/'
+              target='_blank'
+              rel='noreferrer'
+            >
               <Image
                 width={600}
                 height={350}
@@ -112,7 +132,11 @@ export default function Home() {
             </a>
 
             <h3>
-              <a href='https://react-js-restaurant.netlify.app/'>
+              <a
+                href='https://react-js-restaurant.netlify.app/'
+                target='_blank'
+                rel='noreferrer'
+              >
                 Restaurant Website
               </a>
             </h3>
@@ -142,7 +166,11 @@ export default function Home() {
 
           {/* project */}
           <article className={styles.project}>
-            <a href='https://hamsame.github.io/logo/'>
+            <a
+              href='https://hamsame.github.io/logo/'
+              target='_blank'
+              rel='noreferrer'
+            >
               <Image
                 width={600}
                 height={350}
@@ -151,7 +179,11 @@ export default function Home() {
               />
             </a>
             <h3>
-              <a href='https://hamsame.github.io/logo/'>
+              <a
+                href='https://hamsame.github.io/logo/'
+                target='_blank'
+                rel='noreferrer'
+              >
                 Adventure Shop Website
               </a>
             </h3>
@@ -185,7 +217,6 @@ export default function Home() {
         <a
           href='https://vercel.com?utm_source=create-next-app&utm_medium=default-template&utm_campaign=create-next-app'
           target='_blank'
-          rel='noreferrer'
           rel='noopener noreferrer'
         >
           Powered by{' '}
