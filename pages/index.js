@@ -188,7 +188,7 @@ export default function Home() {
               </a>
             </h3>
             <p>
-              A website I've built for a fake local adventure shop utilising
+              A website I have built for a fake local adventure shop utilising
               HTML, SASS, a little JavaScript and Line Awesome icons.
             </p>
             <span>
