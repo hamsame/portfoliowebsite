@@ -19,7 +19,11 @@ export default function Home() {
         <section className={styles.portfolioProjects}>
           {/* project */}
           <article className={styles.project}>
-            <a href='https://gameland.vercel.app/' target='_blank'>
+            <a
+              href='https://gameland.vercel.app/'
+              target='_blank'
+              rel='noreferrer'
+            >
               <Image
                 width={600}
                 height={350}
@@ -42,6 +46,7 @@ export default function Home() {
                 href='https://github.com/hamsame/gameland'
                 className={styles.projectLink}
                 target='_blank'
+                rel='noreferrer'
               >
                 Github Repository
               </a>
@@ -49,6 +54,7 @@ export default function Home() {
                 href='https://gameland.vercel.app/'
                 className={styles.projectLink}
                 target='_blank'
+                rel='noreferrer'
               >
                 Live Website
               </a>
@@ -79,6 +85,7 @@ export default function Home() {
                 href='https://github.com/hamsame/gonomad'
                 className={styles.projectLink}
                 target='_blank'
+                rel='noreferrer'
               >
                 Github Repository
               </a>
@@ -86,6 +93,7 @@ export default function Home() {
                 href='https://gonomad.netlify.app/'
                 className={styles.projectLink}
                 target='_blank'
+                rel='noreferrer'
               >
                 Live Website
               </a>
@@ -117,6 +125,7 @@ export default function Home() {
                 href='https://github.com/hamsame/restaurant-website'
                 className={styles.projectLink}
                 target='_blank'
+                rel='noreferrer'
               >
                 Github Repository
               </a>
@@ -124,6 +133,7 @@ export default function Home() {
                 href='https://react-js-restaurant.netlify.app/'
                 className={styles.projectLink}
                 target='_blank'
+                rel='noreferrer'
               >
                 Live Website
               </a>
@@ -154,6 +164,7 @@ export default function Home() {
                 href='https://github.com/hamsame/logo'
                 className={styles.projectLink}
                 target='_blank'
+                rel='noreferrer'
               >
                 Github Repository
               </a>
@@ -161,6 +172,7 @@ export default function Home() {
                 href='https://react-js-restaurant.netlify.app/'
                 className={styles.projectLink}
                 target='_blank'
+                rel='noreferrer'
               >
                 Live Website
               </a>
@@ -173,6 +185,7 @@ export default function Home() {
         <a
           href='https://vercel.com?utm_source=create-next-app&utm_medium=default-template&utm_campaign=create-next-app'
           target='_blank'
+          rel='noreferrer'
           rel='noopener noreferrer'
         >
           Powered by{' '}
