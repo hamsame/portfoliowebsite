@@ -1,0 +1,52 @@
+.portfolioProjects {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 2rem;
+  margin: 2vh auto;
+  padding: 1rem 0;
+}
+
+.project {
+  width: 100%;
+  height: 100%;
+  line-height: 2.4;
+}
+
+.projectLink {
+  text-decoration: underline;
+  color: #333;
+  text-align: center;
+}
+
+.project img {
+  width: 100%;
+  height: 100%;
+  border-radius: 12px;
+  transition: all 0.3s ease-in-out;
+  transform: scale(1);
+}
+
+.project img:hover {
+  transform: scale(1.02);
+}
+
+.project p {
+  width: 90%;
+}
+
+.project span {
+  display: flex;
+  justify-content: flex-start;
+  gap: 2.5%;
+}
+
+.project span a:hover {
+  color: #000;
+}
+
+@media (max-width: 768px) {
+  .portfolioProjects {
+    grid-template-columns: 1fr;
+    justify-items: center;
+  }
+}
