@@ -1,0 +1,9 @@
+.about {
+  line-height: 2;
+  margin: 2vh auto;
+}
+
+.about p {
+  margin: 4vh 0;
+  font-size: 1.15rem;
+}
