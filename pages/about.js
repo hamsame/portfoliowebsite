@@ -35,16 +35,24 @@ export default function About() {
             >
               AZ-900
             </a>
-            &nbsp;and&nbsp;
+            ,&nbsp;
             <a
               href='https://www.credly.com/badges/078c620f-91dc-46f4-b9f0-e272dccddcc5/public_url'
               target='_blank'
               rel='noreferrer'
             >
-              AZ-204
+              AZ-204,
+            </a>
+            &nbsp;and&nbsp;
+            <a
+              href='https://www.credly.com/badges/7d6a31af-1c68-4e2e-a4f9-a826905d95bb/public_url'
+              target='_blank'
+              rel='noreferrer'
+            >
+              AZ-400
             </a>
             &nbsp;certifications. I have always wanted to make websites and
-            mobile applications. I began to learn web development during the
+            mobile applications, so I began to learn web development during the
             pandemic.
           </p>
           <p>
