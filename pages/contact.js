@@ -1,8 +1,47 @@
 import Head from 'next/head'
 import Navbar from '../components/Navbar'
 import styles from '../styles/Contact.module.css'
+import React, { useState } from 'react'
+import Modal from '../components/Modal'
 
 export default function Contact() {
+  const [person, setPerson] = useState({ name: '', email: '', message: '' })
+  const [people, setPeople] = useState([])
+  const [modal, setModal] = useState({
+    shown: false,
+    modalContent: '',
+    textColor: 'green',
+  })
+
+  const handleChange = (e) => {
+    e.preventDefault()
+    const inputName = e.target.name
+    const inputValue = e.target.value
+    let newItem = { ...person, [inputName]: inputValue }
+    setPerson(newItem)
+  }
+
+  const handleSubmit = (e) => {
+    e.preventDefault()
+    if (person.name && person.email && person.message) {
+      const newPerson = { ...person, id: new Date().getTime().toString() }
+      setPeople([...people, newPerson])
+      setPerson({ name: '', email: '', message: '' })
+      // truthy value message
+      showModal('green', 'Thank you for submitting this form!')
+    } else {
+      // no falsy value message
+      showModal('red', 'Please fill in each field')
+    }
+  }
+
+  const showModal = (textColor, modalContent) => {
+    setModal({ ...modal, shown: true, textColor: textColor, modalContent })
+    setTimeout(() => {
+      setModal({ ...modal, shown: false, textColor: textColor, modalContent })
+    }, 3000)
+  }
+
   return (
     <div className={styles.container}>
       <Head>
@@ -56,18 +95,41 @@ export default function Contact() {
           </article>
           <article>
             <h2>Or Fill in this Form</h2>
-            <form className={styles.form}>
+            {modal.shown && (
+              <Modal
+                textColor={modal.textColor}
+                modalContent={modal.modalContent}
+              />
+            )}
+            <form className={styles.form} onSubmit={handleSubmit}>
               <div className={styles.formControl}>
                 <label htmlFor='name'>Name : </label>
-                <input type='text' id='name' name='name' />
+                <input
+                  type='text'
+                  id='name'
+                  name='name'
+                  value={person.name}
+                  onChange={handleChange}
+                />
               </div>
               <div className={styles.formControl}>
                 <label htmlFor='email'>Email : </label>
-                <input type='text' id='email' name='email' />
+                <input
+                  type='text'
+                  id='email'
+                  name='email'
+                  value={person.email}
+                  onChange={handleChange}
+                />
               </div>
               <div className={styles.formControl}>
                 <label htmlFor='message'>Message : </label>
-                <textarea name='message' id='message'></textarea>
+                <textarea
+                  name='message'
+                  id='message'
+                  value={person.message}
+                  onChange={handleChange}
+                ></textarea>
               </div>
               <button type='submit' className={styles.submitBtn}>
                 Submit
