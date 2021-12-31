@@ -1,6 +1,5 @@
 import Head from 'next/head'
 import Image from 'next/image'
-import Navbar from '../components/Navbar'
 import styles from '../styles/Home.module.css'
 
 export default function Home() {
@@ -11,8 +10,6 @@ export default function Home() {
         <meta name='description' content="Hamsa Elmi's Portfolio Website" />
         <link rel='icon' href='/favicon.ico' />
       </Head>
-
-      <Navbar />
 
       <main>
         <h1>Projects</h1>
@@ -212,10 +209,6 @@ export default function Home() {
           </article>
         </section>
       </main>
-
-      <footer style={{ textAlign: 'center', margin: '10vh 0 2vh ' }}>
-        <p>Created By Hamsa Elmi &copy; 2021</p>
-      </footer>
     </div>
   )
 }

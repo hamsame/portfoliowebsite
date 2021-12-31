@@ -18,8 +18,6 @@ export default function About() {
         />
       </Head>
 
-      <Navbar />
-
       <main className={styles.about}>
         <h1>About Me</h1>
         <section>
@@ -65,9 +63,6 @@ export default function About() {
           </p>
         </section>
       </main>
-      <footer style={{ textAlign: 'center', margin: '10vh 0 2vh ' }}>
-        <p>Created By Hamsa Elmi &copy; 2021</p>
-      </footer>
     </div>
   )
 }
