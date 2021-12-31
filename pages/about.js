@@ -65,6 +65,9 @@ export default function About() {
           </p>
         </section>
       </main>
+      <footer style={{ textAlign: 'center', margin: '10vh 0 2vh ' }}>
+        <p>Created By Hamsa Elmi &copy; 2021</p>
+      </footer>
     </div>
   )
 }
