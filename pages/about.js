@@ -18,8 +18,6 @@ export default function About() {
         />
       </Head>
 
-      <Navbar />
-
       <main className={styles.about}>
         <h1>About Me</h1>
         <section>

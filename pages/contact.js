@@ -57,8 +57,6 @@ export default function Contact() {
         />
       </Head>
 
-      <Navbar />
-
       <main className={styles.contact}>
         <h1>Contact Me</h1>
         <section>
