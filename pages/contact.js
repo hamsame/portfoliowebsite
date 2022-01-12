@@ -1,15 +1,43 @@
 import Head from 'next/head'
-import Navbar from '../components/Navbar'
 import styles from '../styles/Contact.module.css'
-import React, { useState } from 'react'
 import Modal from '../components/Modal'
+import React, { useState } from 'react'
+import { useForm } from '@formspree/react'
 
-export default function Contact() {
+export async function getStaticProps() {
+  const apiKey = process.env.NEXT_PUBLIC_FORM_ID
+
+  return {
+    props: { apiKey },
+  }
+}
+export default function Contact({ apiKey }) {
+  const [state, handleSubmit] = useForm(apiKey, {
+    data: {
+      subject: 'Someone filled in your form',
+      pageTitle: function () {
+        return document.title
+      },
+    },
+  })
+
+  const postFormAction = () => {
+    // show Modal for 3 seconds
+    setModal({ ...modal, shown: true, color: 'green' })
+    setTimeout(() => {
+      setModal({ ...modal, shown: false, color: 'green' })
+    }, 3000)
+
+    setTimeout(() => {
+      // Clear input fields
+      setPerson({ name: '', email: '', message: '' })
+    }, 6000)
+  }
+
   const [person, setPerson] = useState({ name: '', email: '', message: '' })
-  const [people, setPeople] = useState([])
   const [modal, setModal] = useState({
     shown: false,
-    modalContent: '',
+    modalContent: 'Thank you for submitting this form',
     textColor: 'green',
   })
 
@@ -19,27 +47,6 @@ export default function Contact() {
     const inputValue = e.target.value
     let newItem = { ...person, [inputName]: inputValue }
     setPerson(newItem)
-  }
-
-  const handleSubmit = (e) => {
-    e.preventDefault()
-    if (person.name && person.email && person.message) {
-      const newPerson = { ...person, id: new Date().getTime().toString() }
-      setPeople([...people, newPerson])
-      setPerson({ name: '', email: '', message: '' })
-      // truthy value message
-      showModal('green', 'Thank you for submitting this form!')
-    } else {
-      // no falsy value message
-      showModal('red', 'Please fill in each field')
-    }
-  }
-
-  const showModal = (textColor, modalContent) => {
-    setModal({ ...modal, shown: true, textColor: textColor, modalContent })
-    setTimeout(() => {
-      setModal({ ...modal, shown: false, textColor: textColor, modalContent })
-    }, 3000)
   }
 
   return (
@@ -93,13 +100,13 @@ export default function Contact() {
           </article>
           <article>
             <h2>Or Fill in this Form</h2>
-            {modal.shown && (
-              <Modal
-                textColor={modal.textColor}
-                modalContent={modal.modalContent}
-              />
-            )}
             <form className={styles.form} onSubmit={handleSubmit}>
+              {modal.shown && (
+                <Modal
+                  textColor={modal.textColor}
+                  modalContent={modal.modalContent}
+                />
+              )}
               <div className={styles.formControl}>
                 <label htmlFor='name'>Name : </label>
                 <input
@@ -129,7 +136,12 @@ export default function Contact() {
                   onChange={handleChange}
                 ></textarea>
               </div>
-              <button type='submit' className={styles.submitBtn}>
+              <button
+                type='submit'
+                className={styles.submitBtn}
+                disabled={state.submitting}
+                onClick={() => postFormAction()}
+              >
                 Submit
               </button>
             </form>
