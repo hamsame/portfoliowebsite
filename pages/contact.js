@@ -1,17 +1,19 @@
 import Head from 'next/head'
-import Navbar from '../components/Navbar'
 import styles from '../styles/Contact.module.css'
 import React, { useState } from 'react'
-import Modal from '../components/Modal'
+import { useForm } from '@formspree/react'
 
 export default function Contact() {
-  const [person, setPerson] = useState({ name: '', email: '', message: '' })
-  const [people, setPeople] = useState([])
-  const [modal, setModal] = useState({
-    shown: false,
-    modalContent: '',
-    textColor: 'green',
+  const [state, handleSubmit] = useForm(process.env.NEXT_PUBLIC_FORM_ID, {
+    data: {
+      subject: 'Someone filled in your form',
+      pageTitle: function () {
+        return document.title
+      },
+    },
   })
+
+  const [person, setPerson] = useState({ name: '', email: '', message: '' })
 
   const handleChange = (e) => {
     e.preventDefault()
@@ -19,27 +21,6 @@ export default function Contact() {
     const inputValue = e.target.value
     let newItem = { ...person, [inputName]: inputValue }
     setPerson(newItem)
-  }
-
-  const handleSubmit = (e) => {
-    e.preventDefault()
-    if (person.name && person.email && person.message) {
-      const newPerson = { ...person, id: new Date().getTime().toString() }
-      setPeople([...people, newPerson])
-      setPerson({ name: '', email: '', message: '' })
-      // truthy value message
-      showModal('green', 'Thank you for submitting this form!')
-    } else {
-      // no falsy value message
-      showModal('red', 'Please fill in each field')
-    }
-  }
-
-  const showModal = (textColor, modalContent) => {
-    setModal({ ...modal, shown: true, textColor: textColor, modalContent })
-    setTimeout(() => {
-      setModal({ ...modal, shown: false, textColor: textColor, modalContent })
-    }, 3000)
   }
 
   return (
@@ -93,12 +74,6 @@ export default function Contact() {
           </article>
           <article>
             <h2>Or Fill in this Form</h2>
-            {modal.shown && (
-              <Modal
-                textColor={modal.textColor}
-                modalContent={modal.modalContent}
-              />
-            )}
             <form className={styles.form} onSubmit={handleSubmit}>
               <div className={styles.formControl}>
                 <label htmlFor='name'>Name : </label>
@@ -129,7 +104,11 @@ export default function Contact() {
                   onChange={handleChange}
                 ></textarea>
               </div>
-              <button type='submit' className={styles.submitBtn}>
+              <button
+                type='submit'
+                className={styles.submitBtn}
+                disabled={state.submitting}
+              >
                 Submit
               </button>
             </form>
