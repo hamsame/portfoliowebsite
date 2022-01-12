@@ -3,8 +3,15 @@ import styles from '../styles/Contact.module.css'
 import React, { useState } from 'react'
 import { useForm } from '@formspree/react'
 
-export default function Contact() {
-  const [state, handleSubmit] = useForm(process.env.NEXT_PUBLIC_FORM_ID, {
+export async function getStaticProps() {
+  const apiKey = process.env.NEXT_PUBLIC_FORM_ID
+
+  return {
+    props: { apiKey },
+  }
+}
+export default function Contact({ apiKey }) {
+  const [state, handleSubmit] = useForm(apiKey, {
     data: {
       subject: 'Someone filled in your form',
       pageTitle: function () {
