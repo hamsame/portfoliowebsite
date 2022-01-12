@@ -1,5 +1,6 @@
 import Head from 'next/head'
 import styles from '../styles/Contact.module.css'
+import Modal from '../components/Modal'
 import React, { useState } from 'react'
 import { useForm } from '@formspree/react'
 
@@ -20,7 +21,25 @@ export default function Contact({ apiKey }) {
     },
   })
 
+  const postFormAction = () => {
+    // show Modal for 3 seconds
+    setModal({ ...modal, shown: true, color: 'green' })
+    setTimeout(() => {
+      setModal({ ...modal, shown: false, color: 'green' })
+    }, 3000)
+
+    setTimeout(() => {
+      // Clear input fields
+      setPerson({ name: '', email: '', message: '' })
+    }, 6000)
+  }
+
   const [person, setPerson] = useState({ name: '', email: '', message: '' })
+  const [modal, setModal] = useState({
+    shown: false,
+    modalContent: 'Thank you for submitting this form',
+    textColor: 'green',
+  })
 
   const handleChange = (e) => {
     e.preventDefault()
@@ -82,6 +101,12 @@ export default function Contact({ apiKey }) {
           <article>
             <h2>Or Fill in this Form</h2>
             <form className={styles.form} onSubmit={handleSubmit}>
+              {modal.shown && (
+                <Modal
+                  textColor={modal.textColor}
+                  modalContent={modal.modalContent}
+                />
+              )}
               <div className={styles.formControl}>
                 <label htmlFor='name'>Name : </label>
                 <input
@@ -115,6 +140,7 @@ export default function Contact({ apiKey }) {
                 type='submit'
                 className={styles.submitBtn}
                 disabled={state.submitting}
+                onClick={() => postFormAction()}
               >
                 Submit
               </button>
