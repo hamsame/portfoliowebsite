@@ -18,7 +18,6 @@ export const getStaticProps = async () => {
 }
 
 export default function Home({ projects }) {
-  // console.log(projects.items)
   return (
     <div className={styles.container}>
       <Head>
@@ -31,7 +30,6 @@ export default function Home({ projects }) {
         <h1>Projects</h1>
         <section className={styles.portfolioProjects}>
           {projects.items.map((item, index) => {
-            console.log(item)
             return (
               <article key={index} className={styles.project}>
                 <a
