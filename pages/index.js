@@ -33,19 +33,53 @@ export default function Home({ projects }) {
           {projects.items.map((item, index) => {
             console.log(item)
             return (
-              <article key={index}>
-                <Image
-                  src={'https:' + item.fields.projectThumbnail.fields.file.url}
-                  width={
-                    item.fields.projectThumbnail.fields.file.details.image.width
-                  }
-                  height={
-                    item.fields.projectThumbnail.fields.file.details.image
-                      .height
-                  }
-                  alt={item.fields.projectThumbnail.fields.description}
-                />
-                {item.fields.projectTitle}
+              <article key={index} className={styles.project}>
+                <a
+                  href={item.fields.hostedWebsite}
+                  target='_blank'
+                  rel='noreferrer'
+                >
+                  <Image
+                    src={
+                      'https:' + item.fields.projectThumbnail.fields.file.url
+                    }
+                    width={
+                      item.fields.projectThumbnail.fields.file.details.image
+                        .width
+                    }
+                    height={
+                      item.fields.projectThumbnail.fields.file.details.image
+                        .height
+                    }
+                    alt={item.fields.projectThumbnail.fields.description}
+                  />
+                </a>
+                <a
+                  href={item.fields.hostedWebsite}
+                  target='_blank'
+                  rel='noreferrer'
+                >
+                  <h3>{item.fields.projectTitle}</h3>
+                </a>
+                <p>{item.fields.briefDescription}</p>
+                <span>
+                  <a
+                    href={item.fields.githubRepo}
+                    target='_blank'
+                    rel='noreferrer'
+                    className={styles.projectLink}
+                  >
+                    Github Repository
+                  </a>
+                  <a
+                    href={item.fields.hostedWebsite}
+                    target='_blank'
+                    rel='noreferrer'
+                    className={styles.projectLink}
+                  >
+                    Live Website
+                  </a>
+                </span>
               </article>
             )
           })}
